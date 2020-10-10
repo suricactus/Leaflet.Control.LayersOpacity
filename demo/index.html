@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Leaflet.Control.LayersOpacity example</title>
+
+  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+  <link href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" rel="stylesheet"/>
+
+  <script src="./src/L.Control.LayersOpacity.js"></script>
+
+  <style type="text/css">
+    html, body {
+      height: 100%;
+      padding: 0;
+      margin: 0;
+    }
+
+    #map {
+      z-index: 0;
+      height: 100%;
+    }
+
+    /* Optional range enhancement */
+    input[type="range"] {
+      -webkit-appearance: none;
+      -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+      width: 110px;
+      height: 10px;
+      margin: 0;
+      border: none;
+      padding: 1px 2px;
+      border-radius: 30px;
+      background: #F1F0EE;
+      outline: none;
+    }
+    input[type="range"]::-ms-track {
+      border: inherit;
+      color: transparent;
+      background: transparent;
+    }
+    input[type="range"]::-ms-fill-lower,
+    input[type="range"]::-ms-fill-upper {
+      background: transparent;
+    }
+    input[type="range"]::-ms-tooltip {
+      display: none;
+    }
+    input[type="range"]::-ms-thumb {
+      width: 15px;
+      height: 18px;
+      border-radius: 12px;
+      border: 0;
+      background-image: linear-gradient(to bottom, #1253A4 0, #1253A4 100%);
+    }
+  </style>
+</head>
+<body>
+
+  <div id="map"></div>
+  <script type="text/javascript">
+    //MIERUNE Color
+    const m_color = new L.tileLayer('https://tile.mierune.co.jp/mierune/{z}/{x}/{y}.png', {
+      attribution: 'Maptiles by <a href="http://mierune.co.jp/" target="_blank">MIERUNE</a>, under CC BY. Data by <a href="http://osm.org/copyright" target="_blank">OpenStreetMap</a> contributors, under ODbL.',
+    });
+
+    //MIERUNE MONO
+    const m_mono = new L.tileLayer('https://tile.mierune.co.jp/mierune_mono/{z}/{x}/{y}.png', {
+      attribution: 'Maptiles by <a href="http://mierune.co.jp/" target="_blank">MIERUNE</a>, under CC BY. Data by <a href="http://osm.org/copyright" target="_blank">OpenStreetMap</a> contributors, under ODbL.',
+    });
+
+    //OSM
+    const o_std = new L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+    });
+
+    //GSI Pale
+    const t_pale = new L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png', {
+      attribution: '<a href="http://www.gsi.go.jp/kikakuchousei/kikakuchousei40182.html" target="_blank">国土地理院</a>',
+    });
+
+    //GSI Ort
+    const t_ort = new L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/ort/{z}/{x}/{y}.jpg', {
+      attribution: '<a href="http://www.gsi.go.jp/kikakuchousei/kikakuchousei40182.html" target="_blank">国土地理院</a>',
+    });
+
+    //MAP
+    const map = L.map('map', {
+      center: [35.6831925, 139.7511307],
+      zoom: 13,
+      zoomControl: true,
+      layers: [m_mono],
+    });
+
+    //BaseLayer
+    const baseLayers = {
+      'MIERUNE Color': m_color,
+      'MIERUNE MONO': m_mono,
+    };
+
+    //AddLayer
+    const overlayLayers = {
+      'OSM': o_std,
+      'GSI Pale': t_pale,
+      'GSI Ort': t_ort,
+    };
+
+    //LayerControl
+    L.control.layers(
+      baseLayers,
+      overlayLayers, {
+        collapsed: false,
+      }
+    ).addTo(map);
+
+    //LayersOpacityControl
+    L.control.layersOpacity(
+      baseLayers,
+      overlayLayers, {
+        collapsed: false,
+      }
+    ).addTo(map);
+
+  </script>
+
+</body>
+</html>
