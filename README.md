@@ -1,24 +1,24 @@
 # Leaflet.Control.Opacity 
 
-Leaflet.Control.LayersOpacity (Leaflet v1.x.x)  
-[npm](https://www.npmjs.com/package/leaflet.control.layersopacity)  
+Leaflet.Control.LayersOpacity (Leaflet v1.x.x). Reuse 
 
-Browser support:
+<img src="https://github.com/suricactus/Leaflet.Control.LayersOpacity/raw/master/demo/demo.png" width="80%" />
+
+## Browser support:
 - Chrome
 - Firefox
 - Safari
 - IE 11
-
 
 ## Options
 
 This plugin mostly reuses the original Leaflet `Layers` control, so check the [Layers Controls docs](https://leafletjs.com/reference-1.7.1.html#control-layers) for more info about options.
 
 ### Demo  
-[demo]()
+[demo](https://suricactus.github.io/Leaflet.Control.LayersOpacity/demo/)
 
 ### Usage
-Check the [demo]() page source. Direct copy of the demo here:
+Check the [demo](https://suricactus.github.io/Leaflet.Control.LayersOpacity/demo/) page source. Direct copy of the demo here:
 
 ```html
 <!DOCTYPE html>
